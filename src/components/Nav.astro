@@ -1,0 +1,79 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+
+const navItems = [
+  { name: "Heim", href: "/" },
+  { name: "Nánar um mig", href: "/details" },
+  { name: "Verkefni", href: "/projects" },
+  { name: "Tæki og tól", href: "/tools" },
+  { name: "Færslur", href: "/posts" },
+  { name: "Uppfærslusaga", href: "/changelog" },
+];
+
+console.log(pathname);
+
+var index = -1;
+
+navItems.forEach((navItem, i) => {
+  if (pathname.includes(navItem.href)) {
+    index = i;
+  }
+});
+
+var displayVal = "block";
+const transformVal = "translateY(" + index * 4 + "rem)";
+if (index < 0) {
+  displayVal = "none";
+}
+---
+
+<nav>
+  {
+    navItems.map((i) => (
+      <a href={i.href} transition:name={"a-" + i.href}>
+        {i.name}
+      </a>
+    ))
+  }
+  <div
+    style={{ transform: transformVal, display: displayVal }}
+    transition:name="highlight"
+  >
+  </div>
+</nav>
+
+<script></script>
+
+<style>
+  nav {
+    left: 20px;
+    top: 20%;
+    position: fixed;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+  }
+
+  div {
+    background-color: black;
+    width: 100%;
+    height: 3.75rem;
+
+    position: absolute;
+    top: 0rem;
+    z-index: 0;
+
+    transition: transform 5s cubic-bezier(0.73, 0.53, 1, -0.31);
+  }
+
+  a {
+    z-index: 1;
+    font-size: 1.25rem;
+    color: white;
+    text-decoration: none;
+    margin: 1em 0;
+    margin-left: 20px;
+    mix-blend-mode: difference;
+  }
+</style>
