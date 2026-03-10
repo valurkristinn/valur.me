@@ -1,4 +1,4 @@
-name: deploy to surge.sh
+name: lint - deploy 
 
 on:
   push:
@@ -6,7 +6,18 @@ on:
       - main
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Install dependencies
+        run: npm i
+      - name: Lint
+        run: npm run lint
+
   deploy:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,5 +26,5 @@ jobs:
         run: npm i
       - name: Build
         run: npm run build
-      - name: Deploy
+      - name: Deploy to surge.sh
         run: npx surge dist valur.surge.sh --token ${{ secrets.SURGE_TOKEN }}
