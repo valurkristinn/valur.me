@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Helvetica Neue", sans-serif;
+  --color-bg: white;
+  --color-main: black;
+  --color-sub: #5e5e5e;
+  --color-accent: #714fac;
 }
+
+p > a {
+  color: var(--color-accent) !important;
+  font-style: italic !important;
+}
+
+.markdown-body::before {
+  display: none !important;
+}
+
 
 ::view-transition-group(highlight) {
   animation-duration: 0.4s;

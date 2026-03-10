@@ -1,5 +1,6 @@
 ---
 import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 ---
@@ -15,8 +16,9 @@ import "../styles/global.css";
     <ClientRouter />
     <title>valur.me</title>
   </head>
-  <body class="mx-auto w-full max-w-4xl px-6 font-display"> 
-    <Nav />
+  <Nav />
+  <body class="mx-auto my-[15vh] w-full max-w-3xl px-6 font-display bg-bg" transition:animate="none">
     <slot />
+    <Footer/>
   </body>
 </html>

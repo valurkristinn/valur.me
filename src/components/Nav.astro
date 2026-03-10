@@ -18,13 +18,13 @@ const transformVal = `translateY(${index * 3.75}rem)`;
 const displayVal = index < 0 ? "none" : "block";
 ---
 
-<nav class="fixed left-5 top-[20%] flex flex-col bg-white">
+<nav class="fixed left-5 top-[20vh] flex flex-col bg-bg">
   {
     navItems.map((i) => (
       <a
         href={i.href}
         transition:name={"a-" + i.href}
-        class="z-10 text-xl text-white no-underline py-4 px-[10px] ml-[50px] mr-[30px] mix-blend-difference"
+        class="z-10 text-xl text-bg no-underline py-4 px-[10px] ml-[50px] mr-[30px] mix-blend-difference"
       >
         {i.name}
       </a>
@@ -33,7 +33,7 @@ const displayVal = index < 0 ? "none" : "block";
   <div
     style={{ transform: transformVal, display: displayVal }}
     transition:name="highlight"
-    class="bg-black w-full h-15 absolute top-0 z-0 pointer-events-none transition-transform duration-[400ms] ease-in-out"
+    class="bg-main w-full h-15 absolute top-0 z-0 pointer-events-none transition-transform duration-[400ms] ease-in-out"
   >
   </div>
 </nav>
