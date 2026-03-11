@@ -24,6 +24,8 @@ jobs:
       - uses: actions/setup-node@v3
       - name: Install dependencies
         run: npm i
+      - name: Create JSON from Secret
+        run: echo '${{ secrets.DATA_JSON }}' > ~/myData/data.json
       - name: Build
         run: npm run build
       - name: Deploy to surge.sh

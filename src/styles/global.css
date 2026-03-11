@@ -24,3 +24,8 @@ p.sub {
   animation-duration: 0.4s;
   animation-timing-function: ease-in-out;
 }
+
+.markdown-body::before,
+.markdown-body::after {
+  display: none !important;
+}

@@ -7,7 +7,7 @@ const { title, subtitle, body, date, href } = Astro.props;
 
   {subtitle && <p class="sub">{subtitle}</p>}
   
-  {body.map((b: string) => (
+  {body && body.map((b: string) => (
   <p class="!m-0">{b}</p>
   ))}
   

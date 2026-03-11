@@ -5,12 +5,16 @@ import data from "../data/data.json" with { type: "json" };
 
 const languages = data.skills.technical[0].split(":")[1];
 const frameworks = data.skills.technical[1].split(":")[1];
+
+data.education.map((e) => {
+  e.institution.toLowerCase();
+});
 ---
 
 <Layout>
   <div class="markdown-body">
     <section>
-      <p class="bg-black">
+      <p>
         Ég hef mjög mikinn áhuga á reikniritum og bakendaforritun en á það
         einnig til að takast á við hönnun og framendaforritun, uppáhalds
         tungumálin mín eru C og Java en ég hef þó reynslu af mun fleiri
@@ -20,17 +24,59 @@ const frameworks = data.skills.technical[1].split(":")[1];
       <p class="sub">{languages}</p>
       <p class="sub">{frameworks}</p>
     </section>
-    <section>
-      {
-        data.experience.map((e) => (
-          <Entry
-            title={e.title}
-            subtitle={e.company}
-            body={e.description}
-            date={e.period}
-          />
-        ))
-      }
-    </section>
+
+    <div class="relative">
+      <input type="radio" id="exp" name="radio" class="hidden" checked />
+      <input type="radio" id="edu" name="radio" class="hidden" />
+      <label for="exp" id="exp" class="text-sub hover:text-main text-xl"
+        >Reynsla</label
+      >
+      <br />
+      <label for="edu" id="edu" class="text-sub hover:text-main text-xl"
+        >Menntun</label
+      >
+      <section class="exp">
+        {
+          data.experience.map((e) => (
+            <Entry
+              title={e.title}
+              subtitle={e.company}
+              body={e.description}
+              date={e.period}
+            />
+          ))
+        }
+      </section>
+      <section class="edu">
+        {
+          data.education.map((e) => (
+            <Entry title={e.degree} subtitle={e.institution} date={e.period} />
+          ))
+        }
+      </section>
+    </div>
   </div>
 </Layout>
+
+<style>
+  .exp,
+  .edu {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s ease;
+    height: 0;
+    overflow: hidden;
+  }
+
+  #exp:checked ~ .exp,
+  #edu:checked ~ .edu {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+
+  #exp:checked ~ #exp,
+  #edu:checked ~ #edu {
+    color: var(--color-accent);
+  }
+</style>
