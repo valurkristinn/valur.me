@@ -20,11 +20,6 @@ p.sub {
   color: var(--color-sub);
 }
 
-.markdown-body::before,
-.markdown-body::after {
-  display: none !important;
-}
-
 ::view-transition-group(highlight) {
   animation-duration: 0.4s;
   animation-timing-function: ease-in-out;

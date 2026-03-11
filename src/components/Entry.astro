@@ -1,20 +1,15 @@
 ---
 const { title, subtitle, body, date, href } = Astro.props;
-
 ---
 
-<article class="mb-15">
-  {
-    href ? (
-      <a href={href}>
-        <h2>{title}</h2>
-      </a>
-    ) : (
-      <h2>{title}</h2>
-    )
-  }
+<article>
+  {href ? <a href={href} class="contents"> <h3>{title}</h3></a> : <h3  class="!mb-2 !mt-10">{title}</h3>}
 
-  <p class="sub">{subtitle}</p>
-  {body.map((b: string) => <p>{b}</p>)}
-  <p class="sub">{date}</p>
+  {subtitle && <p class="sub">{subtitle}</p>}
+  
+  {body.map((b: string) => (
+  <p class="!m-0">{b}</p>
+  ))}
+  
+  <p class="sub !mt-2">{date}</p>
 </article>

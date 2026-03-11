@@ -8,9 +8,9 @@ const frameworks = data.skills.technical[1].split(":")[1];
 ---
 
 <Layout>
-  <section>
-    <div class="markdown-body">
-      <p>
+  <div class="markdown-body">
+    <section>
+      <p class="bg-black">
         Ég hef mjög mikinn áhuga á reikniritum og bakendaforritun en á það
         einnig til að takast á við hönnun og framendaforritun, uppáhalds
         tungumálin mín eru C og Java en ég hef þó reynslu af mun fleiri
@@ -19,18 +19,18 @@ const frameworks = data.skills.technical[1].split(":")[1];
       </p>
       <p class="sub">{languages}</p>
       <p class="sub">{frameworks}</p>
-    </div>
-  </section>
-  <section>
-    {
-      data.experience.map((e) => (
-        <Entry
-          title={e.title}
-          subtitle={e.company}
-          body={e.description}
-          date={e.period}
-        />
-      ))
-    }
-  </section>
+    </section>
+    <section>
+      {
+        data.experience.map((e) => (
+          <Entry
+            title={e.title}
+            subtitle={e.company}
+            body={e.description}
+            date={e.period}
+          />
+        ))
+      }
+    </section>
+  </div>
 </Layout>

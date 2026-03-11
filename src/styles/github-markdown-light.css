@@ -195,17 +195,6 @@
   opacity: 1;
 }
 
-.markdown-body hr::before {
-  display: table;
-  content: "";
-}
-
-.markdown-body hr::after {
-  display: table;
-  clear: both;
-  content: "";
-}
-
 .markdown-body table {
   border-spacing: 0;
   border-collapse: collapse;
