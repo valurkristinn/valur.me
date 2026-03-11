@@ -25,11 +25,11 @@ jobs:
       - name: Install dependencies
         run: npm i
       - name: Create JSON from Secret
-      env:
-        JSON_DATA: ${{ secrets.DATA_JSON }}
-      run: |
-        rm -f src/data/data.json
-        echo "$JSON_DATA" > src/data/data.json
+        env:
+          JSON_DATA: ${{ secrets.DATA_JSON }}
+        run: |
+          rm -f src/data/data.json
+          echo "$JSON_DATA" > src/data/data.json
       - name: Build
         run: npm run build
       - name: Deploy to surge.sh
