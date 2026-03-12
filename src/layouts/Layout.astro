@@ -22,7 +22,9 @@ import "../styles/github-markdown-light.css";
     transition:animate="none"
   >
     <Nav />
-    <slot />
+    <div class="markdown-body">
+      <slot />
+    </div>
     <Footer />
   </body>
 </html>

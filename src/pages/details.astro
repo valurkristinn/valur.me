@@ -12,49 +12,47 @@ data.education.map((e) => {
 ---
 
 <Layout>
-  <div class="markdown-body">
-    <section>
-      <p>
-        Ég hef mjög mikinn áhuga á reikniritum og bakendaforritun en á það
-        einnig til að takast á við hönnun og framendaforritun, uppáhalds
-        tungumálin mín eru C og Java en ég hef þó reynslu af mun fleiri
-        forritunarmálum og þróunarumhverfum sem sjá má hér á eftir, endilega
-        skoðaðu reynslu og menntun mína þar á eftir
-      </p>
-      <p class="sub">{languages}</p>
-      <p class="sub">{frameworks}</p>
-    </section>
+  <section>
+    <p>
+      Ég hef mjög mikinn áhuga á reikniritum og bakendaforritun en á það einnig
+      til að takast á við hönnun og framendaforritun, uppáhalds tungumálin mín
+      eru C og Java en ég hef þó reynslu af mun fleiri forritunarmálum og
+      þróunarumhverfum sem sjá má hér á eftir, endilega skoðaðu reynslu og
+      menntun mína þar á eftir
+    </p>
+    <p class="sub">{languages}</p>
+    <p class="sub">{frameworks}</p>
+  </section>
 
-    <div class="relative">
-      <input type="radio" id="exp" name="radio" class="hidden" checked />
-      <input type="radio" id="edu" name="radio" class="hidden" />
-      <label for="exp" id="exp" class="text-sub hover:text-main text-xl"
-        >Reynsla</label
-      >
-      <br />
-      <label for="edu" id="edu" class="text-sub hover:text-main text-xl"
-        >Menntun</label
-      >
-      <section class="exp">
-        {
-          data.experience.map((e) => (
-            <Entry
-              title={e.title}
-              subtitle={e.company}
-              body={e.description}
-              date={e.period}
-            />
-          ))
-        }
-      </section>
-      <section class="edu">
-        {
-          data.education.map((e) => (
-            <Entry title={e.degree} subtitle={e.institution} date={e.period} />
-          ))
-        }
-      </section>
-    </div>
+  <div class="relative">
+    <input type="radio" id="exp" name="radio" class="hidden" checked />
+    <input type="radio" id="edu" name="radio" class="hidden" />
+    <label for="exp" id="exp" class="text-sub hover:text-main text-xl"
+      >Reynsla</label
+    >
+    <br />
+    <label for="edu" id="edu" class="text-sub hover:text-main text-xl"
+      >Menntun</label
+    >
+    <section class="exp">
+      {
+        data.experience.map((e) => (
+          <Entry
+            title={e.title}
+            subtitle={e.company}
+            body={e.description}
+            date={e.period}
+          />
+        ))
+      }
+    </section>
+    <section class="edu">
+      {
+        data.education.map((e) => (
+          <Entry title={e.degree} subtitle={e.institution} date={e.period} />
+        ))
+      }
+    </section>
   </div>
 </Layout>
 

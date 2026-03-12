@@ -10,7 +10,7 @@
   --color-accent: #714fac;
 }
 
-p>a {
+a {
   color: var(--color-accent) !important;
   font-style: italic !important;
 }

@@ -33,4 +33,4 @@ jobs:
       - name: Build
         run: npm run build
       - name: Deploy to surge.sh
-        run: npx surge dist valur.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+        run: npx surge dist valur.me --token ${{ secrets.SURGE_TOKEN }}
