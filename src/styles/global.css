@@ -25,6 +25,11 @@ p.sub {
   animation-timing-function: ease-in-out;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0s !important;
+}
+
 .markdown-body::before,
 .markdown-body::after {
   display: none !important;
