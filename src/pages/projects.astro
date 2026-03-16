@@ -9,6 +9,7 @@ type MarkdownProject = {
     desc: string;
     date: string;
     image: string;
+    content: string;
   };
 };
 
@@ -18,21 +19,19 @@ const projects = Object.values(
 ---
 
 <Layout>
-  <div class="markdown-body">
     <ul>
       {
-        projects.map((post) => (
+        projects.map((project) => (
           <li>
             <Entry
-              title={post.frontmatter.title}
-              href={post.url}
-              body={post.frontmatter.desc}
-              date={post.frontmatter.date}
-              content={post.frontmatter.content}
+              title={project.frontmatter.title}
+              href={project.url}
+              body={project.frontmatter.desc}
+              date={project.frontmatter.date}
+              content={project.frontmatter.content}
             />
           </li>
         ))
       }
     </ul>
-  </div>
 </Layout>

@@ -17,20 +17,18 @@ const posts = Object.values(
 ---
 
 <Layout>
-  <div class="markdown-body">
-    <ul>
-      {
-        posts.map((post) => (
-          <li>
-            <Entry
-              title={post.frontmatter.title}
-              href={post.url}
-              body={post.frontmatter.desc}
-              date={post.frontmatter.date}
-            />
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <Entry
+            title={post.frontmatter.title}
+            href={post.url}
+            body={post.frontmatter.desc}
+            date={post.frontmatter.date}
+          />
+        </li>
+      ))
+    }
+  </ul>
 </Layout>
