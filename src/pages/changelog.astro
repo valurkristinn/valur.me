@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Entry from "../components/Entry.astro";
 
 type commit = {
-  message: string;
+  message: string[];
   date: string;
 };
 
@@ -38,7 +38,7 @@ const refinedData: commit[] = data.map((c) => {
   const splitDate = c.commit.author.date.split("T")[0].split("-");
   const formattedDate = splitDate.reverse().join("-");
   return {
-    message: c.commit.message,
+    message: c.commit.message.split("\n"),
     date: formattedDate,
   };
 });
@@ -52,7 +52,11 @@ console.log(data[0]);
     {
       refinedData.map((commit) => (
         <li>
-          <Entry title={commit.message} date={commit.date} />
+          <Entry
+            title={commit.message[0]}
+            date={commit.date}
+            body={commit.message.splice(1, commit.message.length)}
+          />
         </li>
       ))
     }
