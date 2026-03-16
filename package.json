@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint",
-    "deploy": "surge dist valur.me"
+    "deploy": "surge dist valur.surge.sh"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.1",

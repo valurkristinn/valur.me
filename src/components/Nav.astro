@@ -10,7 +10,7 @@ const navItems = [
 ];
 let index = -1;
 navItems.forEach((navItem, i) => {
-  if (navItem.href === "/" ? pathname === "/" : pathname.startsWith(navItem.href)) {
+  if (pathname.startsWith(navItem.href)) {
     index = i;
   }
 });
@@ -50,8 +50,14 @@ const displayVal = index < 0 ? "none" : "block";
 
   document.addEventListener("astro:before-swap", (e) => {
     if (skipTransition) {
-      e.viewTransition?.skipTransition();
-      skipTransition = false; 
+      if (e.viewTransition) {
+        e.viewTransition.skipTransition();
+
+        e.viewTransition.finished.catch(() => {});
+        e.viewTransition.ready.catch(() => {});
+        e.viewTransition.updateCallbackDone.catch(() => {});
+      }
+      skipTransition = false;
     }
   });
 

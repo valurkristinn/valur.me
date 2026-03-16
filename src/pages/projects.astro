@@ -8,6 +8,7 @@ type MarkdownProject = {
     title: string;
     desc: string;
     date: string;
+    image: string;
   };
 };
 
@@ -27,6 +28,7 @@ const projects = Object.values(
               href={post.url}
               body={post.frontmatter.desc}
               date={post.frontmatter.date}
+              content={post.frontmatter.content}
             />
           </li>
         ))

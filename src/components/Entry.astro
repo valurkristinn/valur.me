@@ -1,15 +1,51 @@
 ---
-const { title, subtitle, body, date, href } = Astro.props;
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+const { title, subtitle, body, date, href, content } = Astro.props;
+
+const isImage = content?.endsWith(".webp");
+const isVideo = content?.endsWith(".webm");
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.{webm,webp}",
+);
+
+const path = content ? `/src/assets/${content}` : null;
+
+if (isImage && path && !images[path]) {
+  throw new Error(`"${path}" does not exist in the /src/assets/ folder.`);
+}
 ---
 
 <article>
-  {href ? <a href={href} class="contents"> <h3>{title}</h3></a> : <h3  class="!mb-2 !mt-10">{title}</h3>}
+  {
+    href ? (
+      <a href={href} class="contents">
+        <h3 class="!mb-2 !mt-10 not-italic">{title}</h3>
+      </a>
+    ) : (
+      <h3 class="!mb-2 !mt-10">{title}</h3>
+    )
+  }
 
   {subtitle && <p class="sub">{subtitle}</p>}
-  
-  {body && body.map((b: string) => (
-  <p class="!m-0">{b}</p>
-  ))}
-  
+
+  {body && body.map((b: string) => <p class="!m-0">{b}</p>)}
+
   <p class="sub !mt-2">{date}</p>
+
+  {
+    isImage && path && (
+      <Image src={images[path]()} alt={"Descriptive image for " + title} />
+    )
+  }
+
+  {
+    isVideo && (
+      <video autoplay loop muted playsinline class="max-w-[60%] max-h-[50vh]">
+        <source src={`/assets/${content}`} type="video/webm" />
+      </video>
+    )
+  }
 </article>
