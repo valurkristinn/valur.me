@@ -4,6 +4,8 @@ import { Image } from "astro:assets";
 
 const { title, subtitle, body, date, href, content } = Astro.props;
 
+const linkRegex = /(\S+\.is)/g;
+
 const isImage = content?.endsWith(".webp");
 const isVideo = content?.endsWith(".webm");
 
@@ -31,7 +33,20 @@ if (isImage && path && !images[path]) {
 
   {subtitle && <p class="sub">{subtitle}</p>}
 
-  {body && body.map((b: string) => <p class="!m-0">{b}</p>)}
+  {
+    body &&
+      body.map((line: string) => (
+        <p class="!m-0">
+          {line.split(linkRegex).map((part) => {
+            if (part.match(linkRegex)) {
+              return <a href={`https://${part}`}>{part}</a>;
+            }
+            // Otherwise, just return the plain text
+            return part;
+          })}
+        </p>
+      ))
+  }
 
   <p class="sub !mt-2">{date}</p>
 
