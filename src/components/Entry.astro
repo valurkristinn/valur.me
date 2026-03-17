@@ -41,7 +41,6 @@ if (isImage && path && !images[path]) {
             if (part.match(linkRegex)) {
               return <a href={`https://${part}`}>{part}</a>;
             }
-            // Otherwise, just return the plain text
             return part;
           })}
         </p>
