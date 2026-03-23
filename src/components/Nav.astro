@@ -63,6 +63,9 @@ const displayVal = index < 0 ? "none" : "block";
   function setupNav() {
     const nav = document.querySelector("nav")!;
     const div = nav?.querySelector("div")!;
+
+    const originalVal = div.style.transform;
+
     function handleMove(event: MouseEvent) {
       const val = event.clientY - nav.getBoundingClientRect().top;
       const percentage = val / nav.getBoundingClientRect().height;
@@ -70,7 +73,7 @@ const displayVal = index < 0 ? "none" : "block";
         3.75 * Math.floor(percentage * (nav.childElementCount - 1));
       div.style.transform = `translateY(${offset}rem)`;
     }
-    const originalVal = div.style.transform;
+
     nav.addEventListener("mousemove", handleMove);
     nav.addEventListener("mouseleave", () => {
       div.style.transform = originalVal;

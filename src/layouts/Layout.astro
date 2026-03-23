@@ -17,28 +17,23 @@ import "../styles/github-markdown-light.css";
     <ClientRouter />
     <title>valur.me</title>
   </head>
-  <body
-    class="mx-auto my-[15vh] w-full max-w-3xl px-6 font-display bg-bg"
-    transition:animate="none"
-  >
+  <body class="font-display" transition:animate="none">
     <Nav />
-    <div class="markdown-body">
+    <main class="markdown-body !mx-auto !my-[15vh] w-full max-w-3xl px-6 bg-bg">
       <slot />
-    </div>
-    <Footer />
+      <Footer />
+    </main>
   </body>
 </html>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
-    
-    const videos = document.querySelectorAll('video');
-    
+  document.addEventListener("astro:page-load", () => {
+    const videos = document.querySelectorAll("video");
+
     videos.forEach((video) => {
       video.load();
-      
+
       video.play().catch(() => {});
     });
-    
   });
 </script>
