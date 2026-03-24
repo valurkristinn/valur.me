@@ -34,3 +34,8 @@ p.sub {
 .markdown-body::after {
   display: none !important;
 }
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 0 !important;
+}

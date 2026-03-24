@@ -1,23 +1,12 @@
 ---
-import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 
 const { title, subtitle, body, date, href, content } = Astro.props;
 
 const linkRegex = /(\S+\.is)/g;
 
-const isImage = content?.endsWith(".webp");
-const isVideo = content?.endsWith(".webm");
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/*.{webm,webp}",
-);
-
-const path = content ? `/src/assets/${content}` : null;
-
-if (isImage && path && !images[path]) {
-  throw new Error(`"${path}" does not exist in the /src/assets/ folder.`);
-}
+const isImage = content?.includes("image");
+const isVideo = content?.includes("video");
 ---
 
 <article>
@@ -49,17 +38,24 @@ if (isImage && path && !images[path]) {
 
   <p class="sub !mt-2">{date}</p>
 
-  {
-    isImage && path && (
-      <Image src={images[path]()} alt={"Descriptive image for " + title} />
-    )
-  }
-
-  {
-    isVideo && (
-      <video autoplay loop muted playsinline class="max-w-[60%] max-h-[50vh]">
-        <source src={`/assets/${content}`} type="video/webm" />
-      </video>
-    )
-  }
+    {isImage && (
+    <Image
+      src={content}
+      style={{ width: '100%', maxHeight: '500px', objectFit: 'cover' }}
+      width={500}
+      height={300}
+      alt={"Lýsandi mynd fyrir " + title}
+    />
+  )}
+  {isVideo && (
+  <video
+    style={{ width: '100%', maxHeight: '500px', objectFit: 'contain', objectPosition: 'left' }}
+    autoPlay
+    loop
+    muted
+    playsInline
+  >
+  <source src={content} type="video/webm" />
+  </video>
+)}
 </article>
