@@ -5,14 +5,10 @@ import data from "../data/data.json" with { type: "json" };
 
 const languages = data.skills.technical[0].split(":")[1];
 const frameworks = data.skills.technical[1].split(":")[1];
-
-data.education.map((e) => {
-  e.institution.toLowerCase();
-});
 ---
 
 <Layout>
-  <section>
+  <section class="mb-12">
     <p>
       Ég hef mjög mikinn áhuga á reikniritum og bakendaforritun en á það einnig
       til að takast á við hönnun og framendaforritun, uppáhalds tungumálin mín
@@ -24,57 +20,61 @@ data.education.map((e) => {
     <p class="sub">{frameworks}</p>
   </section>
 
-  <div class="relative">
-    <input type="radio" id="exp" name="radio" class="hidden" checked />
-    <input type="radio" id="edu" name="radio" class="hidden" />
-    <label for="exp" id="exp" class="text-sub hover:text-main text-xl"
-      >Reynsla</label
-    >
-    <br />
-    <label for="edu" id="edu" class="text-sub hover:text-main text-xl"
-      >Menntun</label
-    >
-    <section class="exp">
-      {
-        data.experience.map((e) => (
-          <Entry
-            title={e.title}
-            subtitle={e.company}
-            body={e.description}
-            date={e.period}
-          />
-        ))
-      }
-    </section>
-    <section class="edu">
-      {
-        data.education.map((e) => (
-          <Entry title={e.degree} subtitle={e.institution} date={e.period} />
-        ))
-      }
-    </section>
-  </div>
+  <input type="radio" id="exp" name="radio" class="hidden" checked />
+  <input type="radio" id="edu" name="radio" class="hidden" />
+  <label
+    for="exp"
+    id="exp"
+    class="text-sub hover:text-main hover:cursor-pointer text-2xl pr-8 "
+    >Reynsla</label
+  >
+  <label
+    for="edu"
+    id="edu"
+    class="text-sub hover:text-main hover:cursor-pointer text-2xl"
+    >Menntun</label
+  >
+  <h1 class="h-0 text-[0] !m-0"></h1>
+  <section class="exp">
+    {
+      data.experience.map((e) => (
+        <Entry
+          title={e.title}
+          subtitle={e.company}
+          body={e.description}
+          date={e.period}
+        />
+      ))
+    }
+  </section>
+  <section class="edu">
+    {
+      data.education.map((e) => (
+        <Entry title={e.degree} subtitle={e.institution} date={e.period} />
+      ))
+    }
+  </section>
+
+  <style>
+    .exp,
+    .edu {
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.4s ease;
+      height: 0;
+      overflow: hidden;
+    }
+
+    #exp:checked ~ .exp,
+    #edu:checked ~ .edu {
+      opacity: 1;
+      visibility: visible;
+      height: auto;
+    }
+
+    #exp:checked ~ #exp,
+    #edu:checked ~ #edu {
+      color: var(--color-accent);
+    }
+  </style>
 </Layout>
-
-<style>
-  .exp,
-  .edu {
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.4s ease;
-    height: 0;
-    overflow: hidden;
-  }
-
-  #exp:checked ~ .exp,
-  #edu:checked ~ .edu {
-    opacity: 1;
-    visibility: visible;
-    height: auto;
-  }
-
-  #exp:checked ~ #exp,
-  #edu:checked ~ #edu {
-    color: var(--color-accent);
-  }
-</style>

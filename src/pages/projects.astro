@@ -19,19 +19,23 @@ const projects = Object.values(
 ---
 
 <Layout>
-    <ul>
-      {
-        projects.map((project) => (
-          <li>
-            <Entry
-              title={project.frontmatter.title}
-              href={project.url}
-              body={project.frontmatter.desc}
-              date={project.frontmatter.date}
-              content={project.frontmatter.content}
-            />
-          </li>
-        ))
-      }
-    </ul>
+  <p>
+    Hér má sjá öll þau skemmtilegu verkefnin sem ég hef tekið að mér, hvort sem
+    það var upp á eigin spýtur, með öðrum eða fyrir einhvern annan
+  </p>
+  <ul>
+    {
+      projects.map((project) => (
+        <li>
+          <Entry
+            title={project.frontmatter.title}
+            href={project.url}
+            body={project.frontmatter.desc}
+            date={project.frontmatter.date}
+            content={project.frontmatter.content}
+          />
+        </li>
+      ))
+    }
+  </ul>
 </Layout>
