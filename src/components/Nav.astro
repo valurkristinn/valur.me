@@ -2,18 +2,21 @@
 const pathname = new URL(Astro.request.url).pathname;
 const navItems = [
   { name: "Heim", href: "/" },
-  { name: "Nánar um mig", href: "/details" },
-  { name: "Verkefni", href: "/projects" },
-  { name: "Tæki og tól", href: "/tools" },
-  { name: "Færslur", href: "/posts" },
-  { name: "Uppfærslusaga", href: "/changelog" },
+  { name: "Nánar um mig", href: "/details/" },
+  { name: "Verkefni", href: "/projects/" },
+  { name: "Tæki og tól", href: "/tools/" },
+  { name: "Færslur", href: "/posts/" },
+  { name: "Uppfærslusaga", href: "/changelog/" },
 ];
 let index = -1;
 navItems.forEach((navItem, i) => {
-  if (pathname.startsWith(navItem.href)) {
+  if (
+    navItem.href === "/" ? pathname === "/" : pathname.startsWith(navItem.href)
+  ) {
     index = i;
   }
 });
+
 const transformVal = `translateY(${index * 3.75}rem)`;
 const displayVal = index < 0 ? "none" : "block";
 ---
