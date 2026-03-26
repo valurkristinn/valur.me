@@ -11,13 +11,14 @@ const isVideo = content?.includes("video");
 
 <article>
   {
-    href ? (
-      <a href={href} class="contents">
-        <h3 class="!mb-2 !mt-10 not-italic hover:underline">{title}</h3>
-      </a>
-    ) : (
-      <h3 class="!mb-2 !mt-10">{title}</h3>
-    )
+    title &&
+      (href ? (
+        <a href={href} class="contents">
+          <h3 class="!mb-2 !mt-10 not-italic hover:underline">{title}</h3>
+        </a>
+      ) : (
+        <h3 class="!mb-2 !mt-10">{title}</h3>
+      ))
   }
 
   {subtitle && <p class="sub">{subtitle}</p>}
@@ -36,7 +37,7 @@ const isVideo = content?.includes("video");
       ))
   }
 
-  <p class="sub !mt-2">{date}</p>
+  {date && <p class="sub !mt-2">{date}</p>}
 
   {
     isImage && (

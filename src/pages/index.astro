@@ -1,13 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const modules = import.meta.glob("../projects/*.md", { eager: true });
-const images = Object.values(modules)
-  .map((m: any) => m.frontmatter?.content)
-  .filter(Boolean);
 ---
 
-{images.map((src) => <link rel="prefetch" as="image" href={src} />)}
 <Layout>
   <p class="!mb-24">Hæ, velkomin/n á <br />vefsíðuna mína</p>
   <div class="*:text-lg">

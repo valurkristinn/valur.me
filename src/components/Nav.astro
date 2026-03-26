@@ -70,12 +70,20 @@ const displayVal = index < 0 ? "none" : "block";
     const div = nav?.querySelector("div")!;
     const originalVal = div.dataset.original!;
 
+    let ticking = false;
+
     function handleMove(event: MouseEvent) {
-      const val = event.clientY - nav.getBoundingClientRect().top;
-      const percentage = val / nav.getBoundingClientRect().height;
-      const offset =
-        3.75 * Math.floor(percentage * (nav.childElementCount - 1));
-      div.style.transform = `translateY(${offset}rem)`;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const val = event.clientY - nav.getBoundingClientRect().top;
+          const percentage = val / nav.getBoundingClientRect().height;
+          const offset =
+            3.75 * Math.floor(percentage * (nav.childElementCount - 1));
+          div.style.transform = `translateY(${offset}rem)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
     }
 
     nav.addEventListener("mousemove", handleMove);

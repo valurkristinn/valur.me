@@ -9,7 +9,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   prefetch: {
-    prefetchAll: true, // Automatically applies to standard links
-    defaultStrategy: "hover", // Uses the human gap between hovering and clicking
+    prefetchAll: true, 
+    defaultStrategy: "viewport", 
   },
 });
