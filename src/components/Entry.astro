@@ -14,7 +14,7 @@ const isVideo = content?.includes("video");
     title &&
       (href ? (
         <a href={href} class="contents">
-          <h3 class="!mb-2 !mt-10 not-italic hover:underline">{title}</h3>
+          <h3 class="!mb-2 !mt-10 hover:underline">{title}</h3>
         </a>
       ) : (
         <h3 class="!mb-2 !mt-10">{title}</h3>
@@ -43,7 +43,6 @@ const isVideo = content?.includes("video");
     isImage && (
       <Image
         src={content}
-        style={{ width: "100%", maxHeight: "500px", objectFit: "cover" }}
         width={500}
         height={300}
         alt={"Lýsandi mynd fyrir " + title}
@@ -52,16 +51,7 @@ const isVideo = content?.includes("video");
   }
   {
     isVideo && (
-      <video
-        style={{
-          width: "100%",
-          maxHeight: "500px",
-          objectFit: "contain",
-          objectPosition: "left",
-        }}
-        loop
-        muted
-      >
+      <video loop muted>
         <source src={content} type="video/webm" />
       </video>
     )

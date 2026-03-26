@@ -20,6 +20,14 @@ p.sub {
   color: var(--color-sub);
 }
 
+video, img {
+  @apply w-full;
+  @apply max-h-[500px]; 
+  @apply object-contain; 
+  @apply object-left; 
+  @apply my-5;
+}
+
 ::view-transition-group(highlight) {
   animation-duration: 0.4s;
   animation-timing-function: ease-in-out;
