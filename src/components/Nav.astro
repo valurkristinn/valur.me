@@ -36,6 +36,7 @@ const displayVal = index < 0 ? "none" : "block";
   }
   <div
     transition:name="highlight"
+    data-original={transformVal}
     style={{ transform: transformVal, display: displayVal }}
     class="bg-main w-full h-15 absolute top-0 z-0 pointer-events-none transition-transform duration-[400ms] ease-in-out"
   >
@@ -67,8 +68,7 @@ const displayVal = index < 0 ? "none" : "block";
   function setupNav() {
     const nav = document.querySelector("nav")!;
     const div = nav?.querySelector("div")!;
-
-    const originalVal = div.style.transform;
+    const originalVal = div.dataset.original!;
 
     function handleMove(event: MouseEvent) {
       const val = event.clientY - nav.getBoundingClientRect().top;
@@ -77,10 +77,13 @@ const displayVal = index < 0 ? "none" : "block";
         3.75 * Math.floor(percentage * (nav.childElementCount - 1));
       div.style.transform = `translateY(${offset}rem)`;
     }
+
     nav.addEventListener("mousemove", handleMove);
     nav.addEventListener("mouseleave", () => {
       div.style.transform = originalVal;
     });
   }
-  document.addEventListener("astro:page-load", setupNav);
+
+  document.addEventListener("astro:after-swap", setupNav);
+  setupNav();
 </script>

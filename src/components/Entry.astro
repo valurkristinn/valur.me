@@ -13,7 +13,7 @@ const isVideo = content?.includes("video");
   {
     href ? (
       <a href={href} class="contents">
-        <h3 class="!mb-2 !mt-10 not-italic">{title}</h3>
+        <h3 class="!mb-2 !mt-10 not-italic hover:underline">{title}</h3>
       </a>
     ) : (
       <h3 class="!mb-2 !mt-10">{title}</h3>
@@ -38,24 +38,31 @@ const isVideo = content?.includes("video");
 
   <p class="sub !mt-2">{date}</p>
 
-    {isImage && (
-    <Image
-      src={content}
-      style={{ width: '100%', maxHeight: '500px', objectFit: 'cover' }}
-      width={500}
-      height={300}
-      alt={"Lýsandi mynd fyrir " + title}
-    />
-  )}
-  {isVideo && (
-  <video
-    style={{ width: '100%', maxHeight: '500px', objectFit: 'contain', objectPosition: 'left' }}
-    autoPlay
-    loop
-    muted
-    playsInline
-  >
-  <source src={content} type="video/webm" />
-  </video>
-)}
+  {
+    isImage && (
+      <Image
+        src={content}
+        style={{ width: "100%", maxHeight: "500px", objectFit: "cover" }}
+        width={500}
+        height={300}
+        alt={"Lýsandi mynd fyrir " + title}
+      />
+    )
+  }
+  {
+    isVideo && (
+      <video
+        style={{
+          width: "100%",
+          maxHeight: "500px",
+          objectFit: "contain",
+          objectPosition: "left",
+        }}
+        loop
+        muted
+      >
+        <source src={content} type="video/webm" />
+      </video>
+    )
+  }
 </article>
