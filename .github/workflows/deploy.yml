@@ -5,8 +5,8 @@ on:
     branches:
       - main
 
-jobs:
-  lint:
+  lint-deploy:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,15 +15,6 @@ jobs:
         run: npm i
       - name: Lint
         run: npm run lint
-
-  deploy:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - name: Install dependencies
-        run: npm i
       - name: Create JSON from Secret
         env:
           JSON_DATA: ${{ secrets.DATA_JSON }}
