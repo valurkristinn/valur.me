@@ -2,7 +2,7 @@
 title: Lorem
 desc: [dolor sit amet., consectetur adipiscing elit., Nullam ut elit nisi.]
 layout: ../../layouts/MdLayout.astro
-date: 26-03-2026
+date: 26-02-2026
 ---
 
 # Lorem
@@ -10,24 +10,22 @@ date: 26-03-2026
 dolor sit amet, consectetur adipiscing elit. Nullam ut `elit nisi`.
 Fusce vel interdum nulla. **Nulla facilisi.** Morbi imperdiet eu metus ac placerat.
 ```ts
-const lorem = (n: number): string => {
-  return "ipsum".repeat(n);
-};
+const lorem = 26/4
 ```
 
 ---
 
-## Metrics
+## Amet
 
-| Field     | Value     | Status    |
-|-----------|-----------|-----------|
-| Fusce vel | interdum  | ✓ Active  |
-| Morbi     | imperdiet | ✓ Active  |
-| Aliquam   | volutpat  | ⚠ Pending |
+| Morbi     | Interdum  |
+|-----------|-----------|
+| Fusce vel | interdum  |
+| Morbi     | imperdiet |
+| Aliquam   | volutpat  | 
 
 Etiam ornare sapien quis tellus rutrum, sit amet pharetra arcu ultricies.
 Mauris rhoncus massa et consequat gravida. Suspendisse faucibus dictum purus.
 
-> Use `semper` when `neque` is undefined.
+> Fusce  `semper` vel `neque` interdum nulla.
 
 Praesent et mattis diam. Mauris sodales ante sed elementum semper.
