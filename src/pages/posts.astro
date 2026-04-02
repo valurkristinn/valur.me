@@ -1,35 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Entry from "../components/Entry.astro";
-
-type MarkdownPost = {
-  url: string;
-  frontmatter: {
-    title: string;
-    desc: string;
-    date: string;
-  };
-};
-
-const posts = Object.values(
-  import.meta.glob<MarkdownPost>("./posts/*.md", { eager: true }),
-);
+import PostsSection from "../components/sections/PostsSection.astro"
 ---
 
 <Layout>
-  <p>Hér set ég inn færslur um allskonar skemmtilegt, oftast eitthvað sem ég er að dunda mér við sjálfur og langar að deila</p>
-  <ul>
-    {
-      posts.map((post) => (
-        <li>
-          <Entry
-            title={post.frontmatter.title}
-            href={post.url}
-            body={post.frontmatter.desc}
-            date={post.frontmatter.date}
-          />
-        </li>
-      ))
-    }
-  </ul>
+  <PostsSection/> 
 </Layout>

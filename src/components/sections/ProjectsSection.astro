@@ -1,0 +1,40 @@
+---
+import Entry from "../Entry.astro";
+
+type MarkdownProject = {
+  url: string;
+  frontmatter: {
+    title: string;
+    desc: string;
+    date: string;
+    image: string;
+    content: string;
+  };
+};
+
+const projects = Object.values(
+  import.meta.glob<MarkdownProject>("../../pages/projects/*.md", { eager: true }),
+);
+---
+
+<>
+  <p>
+    Hér má sjá öll þau skemmtilegu verkefnin sem ég hef tekið að mér, hvort sem
+    það var upp á eigin spýtur, með öðrum eða fyrir einhvern annan
+  </p>
+  <ul>
+    {
+      projects.map((project) => (
+        <li>
+          <Entry
+            title={project.frontmatter.title}
+            href={project.url}
+            body={project.frontmatter.desc}
+            date={project.frontmatter.date}
+            content={project.frontmatter.content}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</>

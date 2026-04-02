@@ -1,0 +1,34 @@
+---
+import Entry from "../Entry.astro";
+
+type MarkdownPost = {
+  url: string;
+  frontmatter: {
+    title: string;
+    desc: string;
+    date: string;
+  };
+};
+
+const posts = Object.values(
+import.meta.glob<MarkdownPost>("../../pages/posts/*.md", { eager: true }),
+);
+---
+
+<>
+  <p>Hér set ég inn færslur um allskonar skemmtilegt, oftast eitthvað sem ég er að dunda mér við sjálfur og langar að deila</p>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <Entry
+            title={post.frontmatter.title}
+            href={post.url}
+            body={post.frontmatter.desc}
+            date={post.frontmatter.date}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</>
