@@ -1,1 +1,111 @@
-/Users/valur/myData/data.json
+{
+  "experience": [
+    {
+      "title": "Forritari",
+      "company": "Tensio",
+      "period": "Desember 2025",
+      "description": [
+        "Hannaði og forritaði einn nýja vefsíðu frá grunni fyrir fyrirtækið, sjá má síðunna á tensio.is",
+        "Notað var Typescript, NextJS og Contentful, vefsíðan var hönnuð í figma áður en hún var útfærð"
+      ]
+    },
+    {
+      "title": "Aðstoðarkennari",
+      "company": "Háskóli Íslands",
+      "period": "2025 - 2026",
+      "description": [
+        "Kenndi dæmatíma í hverri viku og sá um yfirferð verkefna, hlutaprófa og lokaprófa",
+        "Kenndi Tölvunarfræði 1 og Viðmótsforritun"
+      ]
+    },
+    {
+      "title": "Aðalþjálfari",
+      "company": "Þórshamar",
+      "period": "2021 - Núverandi",
+      "description": [
+        "Skipulegg og kenni karatetíma fyrir karate-iðkendur, fullorðna og börn, yfirþjálfari byrjendaflokks fullorðinna.",
+        "Byrjaði sem aukaþjálfari 2019"
+      ]
+    },
+    {
+      "title": "Varaformaður stjórnar",
+      "company": "Þórshamar",
+      "period": "2024 - Núverandi",
+      "description": [
+        "Hef setið í stjórn félagsins sem meðstjórnandi síðan 2021 en er nú varaformaður, tek þátt í mánaðarlegum stjórnarfundum, stefnumótun, ákvörðunum er varðar fjárhag o.fl.."
+      ]
+    },
+
+    {
+      "title": "Móttökustarfsmaður",
+      "company": "Bláa lónið",
+      "period": "2023 - 2026",
+      "description": [
+        "Vann mest í móttökunni en þurfti að sinna alls kyns öðrum störfum inni á milli.",
+        "Var í fullri vinnu sumar 2023 og 2024 hef annars verið starfsmaður á vaktasamningi."
+      ]
+    },
+    {
+      "title": "Starfsmaður í böðum",
+      "company": "Kerlingafjöll Highland Base",
+      "period": "Sumar 2025",
+      "description": [
+        "Bar ábyrgð á náttúruböðunum við hótelið, vann þ.a.m. sem lífvörður, barþjónn og hélt böðunum hreinum, einnig aðstoðaði ég aðrar deildir t.d. við að þjóna og ræstingar"
+      ]
+    },
+    {
+      "title": "Sumarstarfsmaður á skrifstofu",
+      "company": "Tensio",
+      "period": "Sumar 2022",
+      "description": [
+        "Umsjón með tölvuþjónustu fyrirtækisins, heimasíðugerð og ýmis önnur verkefni á skrifstofu. Hafði admin réttindi á Office 365 vörum fyrirtækisins."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Háskóli Íslands",
+      "degree": "Hugbúnaðarverkfræði",
+      "period": "2024-2027"
+    },
+    {
+      "institution": "Verzlunarskóli Íslands",
+      "degree": "Náttúrufræðibraut, Eðlisfræðilína",
+      "period": "2021-2024"
+    },
+    {
+      "institution": "ÍSÍ",
+      "degree": "Þjálfaranámskeið, 1. og 2. þrep",
+      "period": "2021, 2024"
+    },
+    {
+      "institution": "Karatesamband Íslands",
+      "degree": "Dómararéttindi",
+      "period": "2022"
+    },
+    {
+      "institution": "",
+      "degree": "Skyndhjálparnámskeið",
+      "period": "2022, 2024"
+    },
+    {
+      "institution": "",
+      "degree": "Almenn Ökuréttindi",
+      "period": "2022"
+    }
+  ],
+  "skills": {
+    "technical": [
+      "Forritunarmál: C, Java, Python, TypeScript, JavaScript, SQL, Haskell, R",
+      "Vefþróun: Make, Next.js, React, Hono, Astro, CSS, HTML, Tailwind, Node, PHP, Flask, Jinja, Contentful",
+      "Þróunarverkfæri: Vim, Git, GitHub, tmux, skipanalínan",
+      "Almenn tölvukunnátta og þekking á Microsoft 365 notkun og administration"
+    ],
+    "soft": [
+      "Tek frumkvæði þegar á þarf að halda",
+      "Ákveðinn, skipulagður og úrræðagóður",
+      "Félagslyndur og jákvæður",
+      "Klára hluti sem mér eru settir fyrir vel og örugglega"
+    ]
+  }
+}
