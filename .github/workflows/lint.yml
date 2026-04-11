@@ -1,4 +1,4 @@
-name: lint - deploy 
+name: lint
 
 on:
   push:
