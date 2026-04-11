@@ -19,7 +19,12 @@ async function getData() {
   const url = "https://api.github.com/repos/valurkristinn/valur.me/commits";
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "valur.me",
+      },
+    });
+
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
@@ -27,7 +32,7 @@ async function getData() {
     const result = await response.json();
     return result;
   } catch (e) {
-    console.error("Fetch failed:");
+    console.error(e);
   }
 }
 
