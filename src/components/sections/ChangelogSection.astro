@@ -15,6 +15,8 @@ type logEntry = {
   };
 };
 
+const TAG = "-CHANGELOG-";
+
 async function getData() {
   const url = "https://api.github.com/repos/valurkristinn/valur.me/commits";
 
@@ -39,14 +41,16 @@ async function getData() {
 
 const data: logEntry[] = (await getData()) || [];
 
-const refinedData: commit[] = data.map((c) => {
-  const splitDate = c.commit.author.date.split("T")[0].split("-");
-  const formattedDate = splitDate.reverse().join("-");
-  return {
-    message: c.commit.message.split("\n"),
-    date: formattedDate,
-  };
-});
+const refinedData: commit[] = data
+  .filter((c) => c.commit.message.includes(TAG))
+  .map((c) => {
+    const splitDate = c.commit.author.date.split("T")[0].split("-");
+    const formattedDate = splitDate.reverse().join("-");
+    return {
+      message: c.commit.message.split("\n").filter((line) => line !== TAG),
+      date: formattedDate,
+    };
+  });
 ---
 
 <section>

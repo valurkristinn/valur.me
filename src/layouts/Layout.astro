@@ -32,10 +32,18 @@ import "../styles/github-markdown-light.css";
 
 <script>
   document.addEventListener("astro:page-load", () => {
+
     const videos = document.querySelectorAll("video");
     videos.forEach((video) => {
       video.load();
       video.play();
     });
+
+    const path = window.location.pathname;
+    const isSubpage = path.split("/").filter(Boolean).length === 1;
+
+    if (isSubpage && window.innerWidth < 1280) {
+      window.location.replace("/");
+    }
   });
 </script>
