@@ -18,7 +18,12 @@ import "../styles/github-markdown-light.css";
     <title>valur.me</title>
   </head>
   <body class="font-display" transition:animate="none">
-    <main class="markdown-body !mx-auto !my-[15vh] w-full max-w-3xl px-6 bg-bg [&>*]:mb-100">
+    <div class="hidden md:block">
+      <Nav />
+    </div>
+    <main
+      class="markdown-body !mx-auto !my-[15vh] w-full max-w-3xl px-6 bg-bg [&>div>section]:min-h-[45vh] [&>div>section]:mb-[40vh] md:[&>div]:hidden [&>section]:hidden md:[&>section]:block"
+    >
       <slot />
       <Footer />
     </main>
@@ -30,6 +35,7 @@ import "../styles/github-markdown-light.css";
     const videos = document.querySelectorAll("video");
     videos.forEach((video) => {
       video.load();
+      video.play();
     });
   });
 </script>

@@ -10,9 +10,13 @@ import ChangelogSection from "../components/sections/ChangelogSection.astro";
 
 <Layout>
   <IndexSection />
-  <DetailsSection />
-  <ProjectsSection />
-  <ToolsSection />
-  <PostsSection />
-  <ChangelogSection />
+
+  <div>
+    <IndexSection mobile={true} />
+    <DetailsSection />
+    <ProjectsSection />
+    <ToolsSection />
+    <PostsSection />
+    <ChangelogSection />
+  </div>
 </Layout>

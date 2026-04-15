@@ -33,10 +33,11 @@ async function getData() {
     return result;
   } catch (e) {
     console.error(e);
+    return [];
   }
 }
 
-const data: logEntry[] = await getData();
+const data: logEntry[] = (await getData()) || [];
 
 const refinedData: commit[] = data.map((c) => {
   const splitDate = c.commit.author.date.split("T")[0].split("-");
@@ -57,7 +58,7 @@ const refinedData: commit[] = data.map((c) => {
           <Entry
             title={commit.message[0]}
             date={commit.date}
-            body={commit.message.splice(1, commit.message.length)}
+            body={commit.message.slice(1, commit.message.length)}
           />
         </li>
       ))

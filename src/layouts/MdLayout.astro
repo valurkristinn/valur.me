@@ -1,8 +1,10 @@
 ---
 import Layout from "./Layout.astro";
+
+const { mobile = false } = Astro.props;
 ---
 
-<Layout>
+<Layout mobile={mobile}>
   <p><a href="./..">til baka</a></p>
   <slot />
 </Layout>
