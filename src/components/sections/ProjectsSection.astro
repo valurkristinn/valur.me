@@ -13,7 +13,9 @@ type MarkdownProject = {
 };
 
 const projects = Object.values(
-  import.meta.glob<MarkdownProject>("../../pages/projects/*.md", { eager: true }),
+  import.meta.glob<MarkdownProject>("../../pages/projects/*.md", {
+    eager: true,
+  }),
 );
 ---
 

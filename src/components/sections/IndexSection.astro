@@ -1,4 +1,6 @@
 ---
+import Footer from "../Footer.astro";
+
 const { mobile = false } = Astro.props;
 ---
 
@@ -10,6 +12,9 @@ const { mobile = false } = Astro.props;
     líka sem aðstoðarkennari.
   </p>
   <p>
-  Hægt er að sjá reynslu og menntun mína <a href={mobile ? "#details" : "/details"}>hér</a>
+    Hægt er að sjá reynslu og menntun mína <a
+      href={mobile ? "#details" : "/details"}>hér</a
+    >
   </p>
+  { mobile && <Footer /> }
 </section>
