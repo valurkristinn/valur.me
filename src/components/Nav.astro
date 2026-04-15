@@ -26,9 +26,8 @@ const displayVal = index < 0 ? "none" : "block";
     navItems.map((i) => (
       <a
         href={i.href}
-        data-skip-transition
         transition:name={"a-" + i.href}
-        class="z-10 text-lg !text-bg !not-italic no-underline py-4 px-[10px] ml-[50px] mr-[30px] mix-blend-difference"
+        class="z-10 text-lg !text-bg !not-italic no-underline py-4 pl-12 pr-10 mix-blend-difference"
       >
         {i.name}
       </a>
@@ -46,8 +45,8 @@ const displayVal = index < 0 ? "none" : "block";
 <script>
   let skipTransition = false;
 
-  document.addEventListener("click", (e) => {
-    if ((e.target as HTMLElement).closest("a[data-skip-transition]")) {
+  document.addEventListener("click", () => {
+    if (document.querySelector("nav")!.matches(":hover")) {
       skipTransition = true;
     }
   });
@@ -70,20 +69,12 @@ const displayVal = index < 0 ? "none" : "block";
     const div = nav?.querySelector("div")!;
     const originalVal = div.dataset.original!;
 
-    let ticking = false;
-
     function handleMove(event: MouseEvent) {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const val = event.clientY - nav.getBoundingClientRect().top;
-          const percentage = val / nav.getBoundingClientRect().height;
-          const offset =
-            3.75 * Math.floor(percentage * (nav.childElementCount - 1));
-          div.style.transform = `translateY(${offset}rem)`;
-          ticking = false;
-        });
-        ticking = true;
-      }
+      const val = event.clientY - nav.getBoundingClientRect().top;
+      const percentage = val / nav.getBoundingClientRect().height;
+      const offset =
+        3.75 * Math.floor(percentage * (nav.childElementCount - 1));
+      div.style.transform = `translateY(${offset}rem)`;
     }
 
     nav.addEventListener("mousemove", handleMove);

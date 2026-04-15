@@ -28,11 +28,8 @@ import "../styles/github-markdown-light.css";
 <script>
   document.addEventListener("astro:page-load", () => {
     const videos = document.querySelectorAll("video");
-
     videos.forEach((video) => {
       video.load();
-
-      video.play().catch(() => {});
     });
   });
 </script>
