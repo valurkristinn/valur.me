@@ -13,6 +13,10 @@ type MarkdownPost = {
 const posts = Object.values(
 import.meta.glob<MarkdownPost>("../../pages/posts/*.md", { eager: true }),
 );
+
+posts.sort((a, b) => 
+  b.frontmatter.date.localeCompare(a.frontmatter.date)
+);
 ---
 
 <section>
