@@ -53,13 +53,7 @@ const displayVal = index < 0 ? "none" : "block";
 
   document.addEventListener("astro:before-swap", (e) => {
     if (skipTransition) {
-      if (e.viewTransition) {
-        e.viewTransition.skipTransition();
-
-        e.viewTransition.finished.catch(() => {});
-        e.viewTransition.ready.catch(() => {});
-        e.viewTransition.updateCallbackDone.catch(() => {});
-      }
+      e.viewTransition.skipTransition();
       skipTransition = false;
     }
   });

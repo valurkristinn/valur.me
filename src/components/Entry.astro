@@ -51,7 +51,7 @@ const isVideo = content?.includes("video");
   }
   {
     isVideo && (
-      <video loop muted>
+      <video>
         <source src={content} type="video/webm" />
       </video>
     )
