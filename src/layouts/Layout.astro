@@ -38,7 +38,16 @@ import "../styles/github-markdown-light.css";
       video.playsInline = true;
       video.loop = true;
       video.load();
-      video.play().catch(() => {});
+    });
+
+    videos.forEach((video) => {
+      video.addEventListener(
+        "canplay",
+        () => {
+          video.play().catch(console.error);
+        },
+        { once: true },
+      );
     });
 
     const path = window.location.pathname;
