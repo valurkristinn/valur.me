@@ -43,7 +43,9 @@ import "../styles/github-markdown-light.css";
       v.addEventListener(
         "canplay",
         () => {
-          v.play();
+          setTimeout(() => {
+            v.play();
+          }, 100);
         },
         { once: true },
       );
