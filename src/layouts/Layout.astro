@@ -33,18 +33,17 @@ import "../styles/github-markdown-light.css";
 <script>
   document.addEventListener("astro:page-load", () => {
     const videos = document.querySelectorAll("video");
-    videos.forEach((video) => {
-      video.muted = true;
-      video.playsInline = true;
-      video.loop = true;
-      video.load();
-    });
 
-    videos.forEach((video) => {
-      video.addEventListener(
+    videos.forEach((v) => {
+      v.muted = true;
+      v.playsInline = true;
+      v.loop = true;
+      v.load();
+
+      v.addEventListener(
         "canplay",
         () => {
-          video.play().catch(console.error);
+          v.play();
         },
         { once: true },
       );

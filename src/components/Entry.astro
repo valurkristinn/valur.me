@@ -51,7 +51,7 @@ const isVideo = content?.includes("video");
   }
   {
     isVideo && (
-      <video>
+      <video style="width:100%;height:auto;">
         <source src={content} type="video/webm" />
       </video>
     )
