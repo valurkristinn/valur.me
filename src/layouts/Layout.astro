@@ -1,7 +1,7 @@
 ---
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
-import { ClientRouter } from "astro:transitions";
+
 import "../styles/global.css";
 import "../styles/github-markdown-light.css";
 ---
@@ -14,48 +14,42 @@ import "../styles/github-markdown-light.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <ClientRouter />
     <title>valur.me</title>
   </head>
-  <body class="font-display" transition:animate="none">
-    <div class="hidden xl:block">
-      <Nav />
-    </div>
-    <main
-      class="markdown-body !mx-auto !my-[15vh] w-full max-w-3xl px-6 bg-bg [&>div>section]:min-h-[45vh] [&>div>section]:mb-[40vh] xl:[&>div]:hidden [&>section]:hidden xl:[&>section]:block"
-    >
-      <slot />
+  <body class="font-display">
+    <div class="markdown-body !mx-auto !mb-[15vh] w-full max-w-3xl px-6 bg-bg">
+      <header>
+        <Nav />
+      </header>
+
+      <main class="my-[15vh]">
+        <slot />
+      </main>
+
       <Footer />
-    </main>
+    </div>
+
+    <script>
+      document.addEventListener("astro:page-load", () => {
+        const videos = document.querySelectorAll("video");
+
+        videos.forEach((v) => {
+          v.muted = true;
+          v.playsInline = true;
+          v.loop = true;
+          v.load();
+
+          v.addEventListener(
+            "canplay",
+            () => {
+              setTimeout(() => {
+                v.play();
+              }, 100);
+            },
+            { once: true },
+          );
+        });
+      });
+    </script>
   </body>
 </html>
-
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const videos = document.querySelectorAll("video");
-
-    videos.forEach((v) => {
-      v.muted = true;
-      v.playsInline = true;
-      v.loop = true;
-      v.load();
-
-      v.addEventListener(
-        "canplay",
-        () => {
-          setTimeout(() => {
-            v.play();
-          }, 100);
-        },
-        { once: true },
-      );
-    });
-
-    const path = window.location.pathname;
-    const isSubpage = path.split("/").filter(Boolean).length === 1;
-
-    if (isSubpage && window.innerWidth < 1280) {
-      window.location.replace("/");
-    }
-  });
-</script>

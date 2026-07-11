@@ -8,7 +8,9 @@ const navItems = [
   { name: "Færslur", href: "/posts/" },
   { name: "Uppfærslusaga", href: "/changelog/" },
 ];
+
 let index = -1;
+
 navItems.forEach((navItem, i) => {
   if (
     navItem.href === "/" ? pathname === "/" : pathname.startsWith(navItem.href)
@@ -16,67 +18,17 @@ navItems.forEach((navItem, i) => {
     index = i;
   }
 });
-
-const transformVal = `translateY(${index * 3.75}rem)`;
-const displayVal = index < 0 ? "none" : "block";
 ---
 
-<nav class="fixed left-5 top-[20vh] flex flex-col bg-bg">
+<nav class="sm:justify-between flex flex-wrap">
   {
-    navItems.map((i) => (
+  navItems.map((navItem, i) => (
       <a
-        href={i.href}
-        transition:name={"a-" + i.href}
-        class="z-10 text-lg !text-bg !not-italic no-underline py-4 pl-12 pr-10 mix-blend-difference"
+        href={navItem.href}
+        class=`md:text-lg m-1 ${index !== i && "!text-main"}`
       >
-        {i.name}
+        {navItem.name}
       </a>
     ))
   }
-  <div
-    transition:name="highlight"
-    data-original={transformVal}
-    style={{ transform: transformVal, display: displayVal }}
-    class="bg-main w-full h-15 absolute top-0 z-0 pointer-events-none transition-transform duration-[400ms] ease-in-out"
-  >
-  </div>
 </nav>
-
-<script>
-  let skipTransition = false;
-
-  document.addEventListener("click", () => {
-    if (document.querySelector("nav")!.matches(":hover")) {
-      skipTransition = true;
-    }
-  });
-
-  document.addEventListener("astro:before-swap", (e) => {
-    if (skipTransition) {
-      e.viewTransition.skipTransition();
-      skipTransition = false;
-    }
-  });
-
-  function setupNav() {
-    const nav = document.querySelector("nav")!;
-    const div = nav?.querySelector("div")!;
-    const originalVal = div.dataset.original!;
-
-    function handleMove(event: MouseEvent) {
-      const val = event.clientY - nav.getBoundingClientRect().top;
-      const percentage = val / nav.getBoundingClientRect().height;
-      const offset =
-        3.75 * Math.floor(percentage * (nav.childElementCount - 1));
-      div.style.transform = `translateY(${offset}rem)`;
-    }
-
-    nav.addEventListener("mousemove", handleMove);
-    nav.addEventListener("mouseleave", () => {
-      div.style.transform = originalVal;
-    });
-  }
-
-  document.addEventListener("astro:after-swap", setupNav);
-  setupNav();
-</script>
