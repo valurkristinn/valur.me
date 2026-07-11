@@ -1,11 +1,14 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
+
+const posts = Object.values(import.meta.glob("../pages/posts/*.md"));
+
 const navItems = [
   { name: "Heim", href: "/" },
   { name: "Nánar um mig", href: "/details/" },
   { name: "Verkefni", href: "/projects/" },
   { name: "Tæki og tól", href: "/tools/" },
-  { name: "Færslur", href: "/posts/" },
+  ...(posts.length > 0 ? [{ name: "Færslur", href: "/posts/" }] : []),
   { name: "Uppfærslusaga", href: "/changelog/" },
 ];
 

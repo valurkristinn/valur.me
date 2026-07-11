@@ -11,16 +11,17 @@ type MarkdownPost = {
 };
 
 const posts = Object.values(
-import.meta.glob<MarkdownPost>("../../pages/posts/*.md", { eager: true }),
+  import.meta.glob<MarkdownPost>("../../pages/posts/*.md", { eager: true }),
 );
 
-posts.sort((a, b) => 
-  b.frontmatter.date.localeCompare(a.frontmatter.date)
-);
+posts.sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
 ---
 
 <section>
-  <p>Hér set ég inn færslur um allskonar skemmtilegt, oftast eitthvað sem ég er að dunda mér við sjálfur og langar að deila</p>
+  <p>
+    Hér set ég inn færslur um allskonar skemmtilegt, oftast eitthvað sem ég er
+    að dunda mér við sjálfur og langar að deila
+  </p>
   <ul>
     {
       posts.map((post) => (
