@@ -5,8 +5,15 @@ const { title, subtitle, body, date, href, content } = Astro.props;
 
 const linkRegex = /(\S+\.is)/g;
 
-const isImage = content?.includes("image");
-const isVideo = content?.includes("video");
+// images in src/assets 
+// videos in public/video 
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/*.{webp,png,jpg,jpeg}",
+  { eager: true },
+);
+
+const isVideo = content?.endsWith(".webm");
+const image = !isVideo && content ? images[`../assets/${content}`]?.default : undefined;
 ---
 
 <article>
@@ -40,19 +47,20 @@ const isVideo = content?.includes("video");
   {date && <p class="sub !mt-2">{date}</p>}
 
   {
-    isImage && (
+    image && (
       <Image
-        src={content}
-        width={500}
-        height={300}
+        src={image}
+        width={768}
+        densities={[1, 2]}
         alt={"Lýsandi mynd fyrir " + title}
+        loading="lazy"
       />
     )
   }
   {
     isVideo && (
       <video style="width:100%;height:auto;">
-        <source src={content} type="video/webm" />
+        <source src={`/video/${content}`} type="video/webm" />
       </video>
     )
   }

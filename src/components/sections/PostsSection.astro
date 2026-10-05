@@ -7,6 +7,7 @@ type MarkdownPost = {
     title: string;
     desc: string;
     date: string;
+    content: string;
   };
 };
 
@@ -31,6 +32,7 @@ posts.sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
             href={post.url}
             body={post.frontmatter.desc}
             date={post.frontmatter.date}
+            content={post.frontmatter.content}
           />
         </li>
       ))
