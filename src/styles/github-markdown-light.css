@@ -214,29 +214,11 @@
   cursor: pointer;
 }
 
-.markdown-body a:focus,
-.markdown-body [role=button]:focus,
-.markdown-body input[type=radio]:focus,
-.markdown-body input[type=checkbox]:focus {
-  outline: 2px solid var(--borderColor-accent-emphasis);
-  outline-offset: -2px;
-  box-shadow: none;
-}
-
 .markdown-body a:focus:not(:focus-visible),
 .markdown-body [role=button]:focus:not(:focus-visible),
 .markdown-body input[type=radio]:focus:not(:focus-visible),
 .markdown-body input[type=checkbox]:focus:not(:focus-visible) {
   outline: solid 1px rgba(0,0,0,0);
-}
-
-.markdown-body a:focus-visible,
-.markdown-body [role=button]:focus-visible,
-.markdown-body input[type=radio]:focus-visible,
-.markdown-body input[type=checkbox]:focus-visible {
-  outline: 2px solid var(--borderColor-accent-emphasis);
-  outline-offset: -2px;
-  box-shadow: none;
 }
 
 .markdown-body a:not([class]):focus,

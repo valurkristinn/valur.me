@@ -23,12 +23,12 @@ navItems.forEach((navItem, i) => {
 });
 ---
 
-<nav class="flex flex-wrap ">
+<nav class="flex flex-wrap gap-6 ">
   {
   navItems.map((navItem, i) => (
       <a
         href={navItem.href}
-        class=`md:text-lg m-3 ${index !== i && "!text-main"}`
+        class=`md:text-lg my-3 ${index !== i && "!text-main"}`
       >
         {navItem.name}
       </a>
