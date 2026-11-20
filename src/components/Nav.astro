@@ -4,10 +4,10 @@ const pathname = new URL(Astro.request.url).pathname;
 const posts = Object.values(import.meta.glob("../pages/posts/*.md"));
 
 const navItems = [
-  { name: "Heim", href: "/" },
-  { name: "Nánar um mig", href: "/details/" },
-  { name: "Verkefni", href: "/projects/" },
-  { name: "Tæki og tól", href: "/tools/" },
+  { name: "heim", href: "/" },
+  { name: "nánar um mig", href: "/details/" },
+  { name: "verkefni", href: "/projects/" },
+  { name: "tæki og tól", href: "/tools/" },
   ...(posts.length > 0 ? [{ name: "Færslur", href: "/posts/" }] : []),
   // { name: "Uppfærslusaga", href: "/changelog/" },
 ];
@@ -23,12 +23,12 @@ navItems.forEach((navItem, i) => {
 });
 ---
 
-<nav class="flex flex-wrap gap-6 ">
+<nav class="flex flex-wrap gap-0">
   {
   navItems.map((navItem, i) => (
       <a
         href={navItem.href}
-        class=`md:text-lg my-3 ${index !== i && "!text-main"}`
+        class=`my-3 px-3 py-1 border-2 border-bg hover:border-accent ${index === i && "!bg-accent !text-bg !border-accent"}`
       >
         {navItem.name}
       </a>
