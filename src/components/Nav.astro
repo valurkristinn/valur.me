@@ -23,15 +23,20 @@ navItems.forEach((navItem, i) => {
 });
 ---
 
-<nav class="flex flex-wrap gap-0">
+<nav>
   {
   navItems.map((navItem, i) => (
-      <a
-        href={navItem.href}
-        class:list={["my-3 menu-highlight", { active: index === i }]}
-      >
+      <a href={navItem.href} data-active={index === i || undefined}>
         {navItem.name}
       </a>
     ))
   }
 </nav>
+
+<style>
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin: var(--space) 0;
+  }
+</style>

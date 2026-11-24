@@ -4,37 +4,23 @@ import data from "../../data/data.json" with { type: "json" };
 
 const languages = data.skills.technical[0].split(":")[1];
 const frameworks = data.skills.technical[1].split(":")[1];
-
-const buttonStyle = "text-xl text-accent menu-highlight";
 ---
 
 <section>
-  <section class="mb-12 pt-8 xl:pt-0" id="details">
+  <section id="details">
     <p>
       Ég hef mikinn áhuga á reikniritum og bakendaforritun og hef einnig gaman
       að hönnun og framendaforritun, uppáhalds tungumálið mitt er C en ég hef þó
       reynslu af mun fleiri forritunarmálum og þróunarumhverfum sem sjá má hér á
       eftir, endilega skoðaðu reynslu og menntun mína þar á eftir
     </p>
-    <p class="sub">{languages}</p>
-    <p class="sub">{frameworks}</p>
+    <small>{languages}</small>
+    <small>{frameworks}</small>
   </section>
 
-  <button
-    type="button"
-    aria-pressed="true"
-    class=`${buttonStyle} active`
-  >
-    Reynsla
-  </button>
-  <button
-    type="button"
-    aria-pressed="false"
-    class={buttonStyle}
-  >
-    Menntun
-  </button>
-  <section class="tab">
+  <button type="button" aria-pressed="true">Reynsla</button>
+  <button type="button" aria-pressed="false">Menntun</button>
+  <section>
     {
       data.experience.map((e) => (
         <Entry
@@ -46,7 +32,7 @@ const buttonStyle = "text-xl text-accent menu-highlight";
       ))
     }
   </section>
-  <section class="tab hidden">
+  <section hidden>
     {
       data.education.map((e) => (
         <Entry title={e.degree} subtitle={e.institution} date={e.period} />
@@ -55,9 +41,15 @@ const buttonStyle = "text-xl text-accent menu-highlight";
   </section>
 </section>
 
+<style>
+  section section:first-child {
+    margin-bottom: var(--space-lg);
+  }
+</style>
+
 <script>
   const buttons = document.querySelectorAll("button");
-  const tabs = document.querySelectorAll(".tab");
+  const tabs = document.querySelectorAll<HTMLElement>("button ~ section");
 
   let lastClicked = buttons[0];
 
@@ -65,11 +57,10 @@ const buttonStyle = "text-xl text-accent menu-highlight";
     b.addEventListener("click", () => {
       if (lastClicked === b) return;
       tabs.forEach((t) => {
-        t.classList.toggle("hidden");
+        t.hidden = !t.hidden;
       });
       buttons.forEach((b) => {
         b.ariaPressed = b.ariaPressed === "true" ? "false" : "true";
-        b.classList.toggle("active");
       });
       lastClicked = b;
     });

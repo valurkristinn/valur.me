@@ -5,8 +5,8 @@ const { title, subtitle, body, date, href, content } = Astro.props;
 
 const linkRegex = /(\S+\.is)/g;
 
-// images in src/assets 
-// videos in public/video 
+// images in src/assets
+// videos in public/video
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "../assets/*.{webp,png,jpg,jpeg}",
   { eager: true },
@@ -21,19 +21,19 @@ const image = !isVideo && content ? images[`../assets/${content}`]?.default : un
     title &&
       (href ? (
         <a href={href}>
-          <h3 class="!mb-2 !mt-10 hover:underline">{title}</h3>
+          <h3>{title}</h3>
         </a>
       ) : (
-        <h3 class="!mb-2 !mt-10">{title}</h3>
+        <h3>{title}</h3>
       ))
   }
 
-  {subtitle && <p class="sub">{subtitle}</p>}
+  {subtitle && <small>{subtitle}</small>}
 
   {
     body &&
       body.map((line: string) => (
-        <p class="!m-0">
+        <p>
           {line.split(linkRegex).map((part) => {
             if (part.match(linkRegex)) {
               return <a href={`https://${part}`}>{part}</a>;
@@ -44,7 +44,7 @@ const image = !isVideo && content ? images[`../assets/${content}`]?.default : un
       ))
   }
 
-  {date && <p class="sub !mt-2">{date}</p>}
+  {date && <small>{date}</small>}
 
   {
     image && (
@@ -59,7 +59,7 @@ const image = !isVideo && content ? images[`../assets/${content}`]?.default : un
   }
   {
     isVideo && (
-      <video style="width:100%;height:auto;">
+      <video>
         <source src={`/video/${content}`} type="video/webm" />
       </video>
     )

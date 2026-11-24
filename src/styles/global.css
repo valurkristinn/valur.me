@@ -1,54 +1,106 @@
-@import "tailwindcss";
-
-@theme {
-  --font-display: serif;
+:root {
   --color-bg: white;
   --color-main: black;
   --color-sub: #6e6e6e;
   --color-accent: #49639a;
   --color-accent-light: oklch(from var(--color-accent) calc(l + 0.35) c h);
+  --space-sm: 0.5rem;
+  --space: 1rem;
+  --space-lg: 3rem;
+  --media-height: 500px;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  box-sizing: border-box;
+  max-width: 46rem;
+  margin: 0 auto 15vh;
+  padding: 0 var(--space);
+  color: var(--color-main);
+  background: var(--color-bg);
+}
+
+main {
+  margin: 10vh 0;
+}
+
+h1,
+h2,
+h3 {
+  margin: var(--space-lg) 0 var(--space-sm);
+  letter-spacing: 0.01em;
 }
 
 a {
-  color: var(--color-accent) !important;
+  color: var(--color-accent);
+  text-decoration: none;
 }
 
-@utility menu-highlight {
-  @apply px-3 py-1;
-  &:hover {
-    @apply !bg-accent-light;
-  }
-  &.active {
-    @apply !bg-accent !text-bg;
-  }
+a:hover {
+  text-decoration: underline;
 }
 
-p.sub {
-  @apply text-sm;
+p {
+  margin: var(--space-sm) 0;
+}
+
+small {
+  display: block;
+  font-size: 0.875rem;
+  margin-bottom: var(--space);
+}
+
+small,
+time {
   color: var(--color-sub);
+}
+
+strong {
+  font-weight: 600;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: var(--color-accent);
+  background: none;
+  border: 0;
+}
+
+nav a,
+button {
+  padding: 0.25em var(--space);
+}
+
+nav a:hover,
+button:hover {
+  background: var(--color-accent-light);
+}
+
+nav a[data-active],
+button[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: var(--color-bg);
 }
 
 video,
 img {
-  @apply w-full;
-  @apply max-h-[500px];
-  @apply object-contain;
-  @apply object-left;
-  @apply my-5;
+  width: 100%;
+  height: auto;
+  max-height: var(--media-height);
+  object-fit: contain;
+  object-position: left;
+  margin: var(--space) 0;
 }
 
 video {
   aspect-ratio: 16 / 9;
-  min-height: 500px;
-  width: 100%;
-}
-
-.markdown-body::before,
-.markdown-body::after {
-  display: none !important;
-}
-
-.markdown-body ul,
-.markdown-body ol {
-  padding-left: 0 !important;
+  min-height: var(--media-height);
 }

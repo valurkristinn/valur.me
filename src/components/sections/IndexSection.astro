@@ -1,7 +1,7 @@
 <section>
-  <p class="!mb-12">Hæ, velkomin/n á <br />vefsíðuna mína</p>
+  <p>Hæ, velkomin/n á <br />vefsíðuna mína</p>
   <p>
-    Ég heiti <span class="font-semibold"> Valur </span> og ég hef gaman að forritun
+    Ég heiti <strong> Valur </strong> og ég hef gaman að forritun
     og hugbúnaði, ég er að læra hugbúnaðarverkfræði í Háskóla Íslands og starfa þar
     líka sem aðstoðarkennari.
   </p>
@@ -9,3 +9,9 @@
     Hægt er að sjá reynslu og menntun mína <a href={"/details/"}>hér</a>
   </p>
 </section>
+
+<style>
+  p:first-child {
+    margin-bottom: var(--space-lg);
+  }
+</style>
