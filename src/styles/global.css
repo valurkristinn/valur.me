@@ -3,7 +3,11 @@
   --color-main: black;
   --color-sub: #6e6e6e;
   --color-accent: #49639a;
-  --color-accent-light: oklch(from var(--color-accent) calc(l + 0.35) c h);
+  --color-accent-light: color-mix(
+    in srgb,
+    var(--color-accent) 20%,
+    var(--color-bg)
+  );
   --space-tiny: 0.25rem;
   --space-sm: 0.5rem;
   --space: 1rem;
@@ -14,6 +18,8 @@
 :root[data-dark] {
   --color-bg: #1e1e1e;
   --color-main: #e1e1e1;
+  --color-sub: #949494;
+  --color-accent: #9db0dc;
 }
 
 spacer {
