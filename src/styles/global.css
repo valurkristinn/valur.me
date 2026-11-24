@@ -89,6 +89,7 @@ button {
   color: var(--color-accent);
   background: none;
   border: 0;
+  cursor: pointer;
 }
 
 nav a,
