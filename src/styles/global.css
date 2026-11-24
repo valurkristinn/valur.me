@@ -6,10 +6,21 @@
   --color-main: black;
   --color-sub: #6e6e6e;
   --color-accent: #49639a;
+  --color-accent-light: oklch(from var(--color-accent) calc(l + 0.35) c h);
 }
 
 a {
   color: var(--color-accent) !important;
+}
+
+@utility menu-highlight {
+  @apply px-3 py-1;
+  &:hover {
+    @apply !bg-accent-light;
+  }
+  &.active {
+    @apply !bg-accent !text-bg;
+  }
 }
 
 p.sub {

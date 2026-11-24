@@ -4,6 +4,8 @@ import data from "../../data/data.json" with { type: "json" };
 
 const languages = data.skills.technical[0].split(":")[1];
 const frameworks = data.skills.technical[1].split(":")[1];
+
+const buttonStyle = "text-xl text-accent menu-highlight";
 ---
 
 <section>
@@ -21,16 +23,17 @@ const frameworks = data.skills.technical[1].split(":")[1];
   <button
     type="button"
     aria-pressed="true"
-    class="text-sub hover:text-main hover:cursor-pointer text-2xl mr-8"
-    >Reynsla</button
+    class=`${buttonStyle} active`
   >
+    Reynsla
+  </button>
   <button
     type="button"
     aria-pressed="false"
-    class="text-sub hover:text-main hover:cursor-pointer text-2xl"
-    >Menntun</button
+    class={buttonStyle}
   >
-  <h1 class="h-0 text-[0] !m-0"></h1>
+    Menntun
+  </button>
   <section class="tab">
     {
       data.experience.map((e) => (
@@ -52,12 +55,6 @@ const frameworks = data.skills.technical[1].split(":")[1];
   </section>
 </section>
 
-<style>
-  [aria-pressed="true"] {
-    color: var(--color-accent);
-  }
-</style>
-
 <script>
   const buttons = document.querySelectorAll("button");
   const tabs = document.querySelectorAll(".tab");
@@ -72,6 +69,7 @@ const frameworks = data.skills.technical[1].split(":")[1];
       });
       buttons.forEach((b) => {
         b.ariaPressed = b.ariaPressed === "true" ? "false" : "true";
+        b.classList.toggle("active");
       });
       lastClicked = b;
     });

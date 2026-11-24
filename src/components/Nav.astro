@@ -28,7 +28,7 @@ navItems.forEach((navItem, i) => {
   navItems.map((navItem, i) => (
       <a
         href={navItem.href}
-        class=`my-3 px-3 py-1 border-2 border-bg hover:border-accent ${index === i && "!bg-accent !text-bg !border-accent"}`
+        class:list={["my-3 menu-highlight", { active: index === i }]}
       >
         {navItem.name}
       </a>
