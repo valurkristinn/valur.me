@@ -1,17 +1,36 @@
 <section>
   <p>Hæ, velkomin/n á <br />vefsíðuna mína</p>
   <p>
-    Ég heiti <strong> Valur </strong> og ég hef gaman að forritun
-    og hugbúnaði, ég er að læra hugbúnaðarverkfræði í Háskóla Íslands og starfa þar
-    líka sem aðstoðarkennari.
+    Ég heiti <strong> Valur </strong> og ég hef gaman að forritun og hugbúnaði, ég
+    er að læra hugbúnaðarverkfræði í Háskóla Íslands og starfa þar líka sem aðstoðarkennari.
   </p>
   <p>
     Hægt er að sjá reynslu og menntun mína <a href={"/details/"}>hér</a>
   </p>
+  <spacer></spacer>
+  <small>
+    er síðan of björt? síðan er líka með <button type="button">næturliti</button>
+  </small>
 </section>
 
 <style>
   p:first-child {
     margin-bottom: var(--space-lg);
   }
+
+  button {
+    padding: var(--space-tiny);
+  }
 </style>
+
+<script>
+  const root = document.documentElement;
+  const button = document.querySelector("small button")!;
+
+  button.ariaPressed = String(root.hasAttribute("data-dark"));
+  button.addEventListener("click", () => {
+    const dark = root.toggleAttribute("data-dark");
+    localStorage.dark = dark ? "1" : "";
+    button.ariaPressed = String(dark);
+  });
+</script>

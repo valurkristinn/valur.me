@@ -4,10 +4,21 @@
   --color-sub: #6e6e6e;
   --color-accent: #49639a;
   --color-accent-light: oklch(from var(--color-accent) calc(l + 0.35) c h);
+  --space-tiny: 0.25rem;
   --space-sm: 0.5rem;
   --space: 1rem;
   --space-lg: 3rem;
   --media-height: 500px;
+}
+
+:root[data-dark] {
+  --color-bg: #1e1e1e;
+  --color-main: #e1e1e1;
+}
+
+spacer {
+  display: block;
+  height: var(--space-lg);
 }
 
 html {
@@ -76,7 +87,7 @@ button {
 
 nav a,
 button {
-  padding: 0.25em var(--space);
+  padding: var(--space-tiny) var(--space);
 }
 
 nav a:hover,

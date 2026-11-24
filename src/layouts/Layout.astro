@@ -14,6 +14,9 @@ import "../styles/global.css";
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>valur.me</title>
+    <script is:inline>
+      if (localStorage.dark) document.documentElement.toggleAttribute("data-dark");
+    </script>
   </head>
   <body>
     <header>
