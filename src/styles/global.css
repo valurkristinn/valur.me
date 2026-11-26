@@ -2,7 +2,7 @@
   --color-bg: white;
   --color-main: black;
   --color-sub: #6e6e6e;
-  --color-accent: #49639a;
+  --color-accent: #444444;
   --color-accent-light: color-mix(
     in srgb,
     var(--color-accent) 20%,
@@ -53,7 +53,6 @@ h3 {
 
 a {
   color: var(--color-accent);
-  text-decoration: none;
 }
 
 a:hover {
